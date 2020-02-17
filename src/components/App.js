@@ -74,9 +74,9 @@ export default class App extends Component {
     this.fetchImages();
   }
 
-  toggleModal = img => {
+  toggleModal = (img = '') => {
     this.setState({
-      largeImage: img || ''
+      largeImage: img
     })
   }
 
@@ -101,7 +101,9 @@ export default class App extends Component {
         {totalPage > 0 && <Button onLoadMore={this.handleLoadMore} />}
 
         {/* Show a large image in the modal */}
-        {largeImage && <Modal img={largeImage} onClose={this.toggleModal} />}
+        {largeImage && <Modal onClose={this.toggleModal}>
+          <img src={largeImage} alt="" />
+        </Modal>}
       </Layout>
     )
   }
